@@ -1,6 +1,7 @@
 /* Reset & Variables */
 * {
   margin: 0;
+  border-radius: 10px;
   padding: 0;
   box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -79,8 +80,7 @@ header {
   height: 80vh;
   background:
     linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80")
-      center/cover;
+    url("./images/homepic.jpg") no-repeat center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -296,9 +296,9 @@ header {
 }
 
 .member-photo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 10%;
   object-fit: cover;
   margin: 0 auto 20px auto;
   display: block;
@@ -312,33 +312,40 @@ header {
   font-size: 18px;
 }
 
-/* CTA Section */
-.cta-section {
-  text-align: center;
-  background: var(--primary-color);
-  color: var(--white);
-  padding: 60px 0;
+/* =========================================
+   Fixed Right Side CTA 
+   ========================================= */
+.fixed-right-cta {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 9999; /* Ensures it stays on top of everything */
 }
 
-.enquire-btn {
-  text-align: center;
-  display: inline-block;
-  padding: 12px 24px;
+.enquire-btn-fixed {
+  display: block;
+  background-color: #2e8b57; /* Change this to match your theme's button color */
   color: #ffffff;
+  padding: 15px 12px;
   text-decoration: none;
-  border: 2px solid #ffffff;
-  border-radius: 4px;
-  font-family: Arial, sans-serif;
   font-weight: bold;
-  background-color: transparent;
-  transition:
-    background-color 0.3s,
-    color 0.3s;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 8px 0 0 8px; /* Rounds the left corners */
+  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+
+  /* Turns the text sideways */
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 }
 
-.enquire-btn:hover {
-  background-color: #ffffff;
-  color: #1b4b7a;
+.enquire-btn-fixed:hover {
+  background-color: #0056b3; /* Darker hover color */
+  color: #ffffff;
+  padding-right: 20px; /* Creates a slight slide-out animation on hover */
 }
 
 /* Footer with Background Image */
@@ -403,34 +410,57 @@ header {
    Social Media Section & Icons
    ========================================= */
 #social {
-  padding: 50px 0;
-  background-color: var(--bg-light);
+  padding: 60px 0;
+  /* Outer background behind the container */
+  background-color: var(--bg-light, #f9f9f9);
+}
+
+/* This creates the visual "card" container */
+#social .container {
+  background-color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  max-width: 800px; /* Keeps the box from stretching too wide */
+  margin: 0 auto;
+  text-align: center;
 }
 
 #social h3 {
-  text-align: center;
   font-size: 2rem;
   color: var(--primary-color);
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .social-links {
   display: flex;
   justify-content: center;
-  gap: 25px;
+  gap: 30px;
   margin-top: 10px;
 }
 
 .social-icon {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--text-dark);
+  background-color: var(
+    --bg-light,
+    #f4f4f4
+  ); /* Light background for the icon circle */
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* Makes the icons circular */
   transition: all 0.3s ease;
-  display: inline-block;
+  text-decoration: none;
 }
 
 .social-icon:hover {
-  color: var(--secondary-color);
+  color: #ffffff;
+  background-color: #2e8b57; /* Change this to your preferred hover color */
   transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Mobile Responsiveness */
