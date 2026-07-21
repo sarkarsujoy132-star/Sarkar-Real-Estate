@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // --- 2. Smooth Scrolling & Header Offset ---
-  // Select all links that have hashes (anchors)
   const allAnchorLinks = document.querySelectorAll('a[href^="#"]');
 
   allAnchorLinks.forEach((anchor) => {
@@ -53,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Determine which section is currently in view
     sections.forEach((section) => {
       const sectionTop = section.offsetTop;
-      // Subtracting header height and a bit of extra padding for better trigger accuracy
       if (window.scrollY >= sectionTop - headerHeight - 50) {
         currentSectionId = section.getAttribute("id");
       }
@@ -61,24 +59,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Loop through nav items and apply/remove active styling
     navItems.forEach((link) => {
-      // Reset color
       link.style.color = "";
-
-      // Apply active color (Sea Green) dynamically to the current section link
       if (link.getAttribute("href") === `#${currentSectionId}`) {
         link.style.color = "var(--secondary-color)";
       }
     });
   });
 
-  // --- 4. Header Shrink Effect on Scroll (Optional polish) ---
+  // --- 4. Header Shrink Effect on Scroll ---
   window.addEventListener("scroll", () => {
     const headerContainer = document.querySelector(".header-container");
     if (window.scrollY > 50) {
-      headerContainer.style.padding = "10px 0"; // Shrink padding
+      headerContainer.style.padding = "10px 0";
       headerContainer.style.transition = "padding 0.3s ease";
     } else {
-      headerContainer.style.padding = "20px 0"; // Original padding
+      headerContainer.style.padding = "20px 0";
     }
   });
 });
